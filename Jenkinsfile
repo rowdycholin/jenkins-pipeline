@@ -1,24 +1,14 @@
 pipeline {
-    agent any 
-    environment {
-        // Using returnStdout
-        CC = """${sh(
-                returnStdout: true,
-                script: 'echo "clang"'
-            )}""" 
-        // Using returnStatus
-        EXIT_STATUS = """${sh(
-                returnStatus: true,
-                script: 'exit 0'
-            )}"""
-    }
+    agent any
     stages {
-        stage('Example') {
-            environment {
-                DEBUG_FLAGS = '-g'
-            }
+        stage('hello AWS') {
             steps {
-                sh 'printenv'
+                withAWS(credentials: 'aws-credentials', region: 'us-east-1') {
+                    sh 'echo "hello KB">hello.txt'
+                    s3Upload acl: 'Private', bucket: 'exploit-cloudformation', file: 'hello.txt'
+                    s3Download bucket: 'exploit-cloudformation', file: 'downloadedHello.txt', path: 'hello.txt'
+                    sh 'cat downloadedHello.txt'
+                }
             }
         }
     }
