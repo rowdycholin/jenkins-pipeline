@@ -7,6 +7,7 @@ pipeline {
     stages {
         stage('Example stage 2') {
             steps {
+                sh 'aws s3 ls'
                 sh 'printenv' 
             }
         }
