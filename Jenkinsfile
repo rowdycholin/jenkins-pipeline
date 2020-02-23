@@ -7,8 +7,8 @@ pipeline {
     stages {
         stage('Example stage 2') {
             steps {
-                sh '/usr/local/bin/aws s3 ls'
-                sh 'printenv|sort' 
+                withAWS(credentials: 'aws-creds', region: 'us-east-1')
+                files = s3FindFiles(bucket:'exploit-cloudformation')
             }
         }
     }
