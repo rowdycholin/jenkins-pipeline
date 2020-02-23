@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Example stage 2') {
             steps {
-                withAWS(credentials: 'aws-creds', region: 'us-east-1') {
+                withAWS(credentials: 'aws-credentials', region: 'us-east-1') {
                    def files = s3FindFiles(bucket:'exploit-cloudformation')
                    sh 'echo ${file}'
                    sh 'echo "hello KB">hello.txt'
