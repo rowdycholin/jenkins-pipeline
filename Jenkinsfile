@@ -1,6 +1,5 @@
 pipeline {
     agent any
-    def files
     environment {
         AWS_ACCESS_KEY_ID     = credentials('aws-creds-access-key-id')
         AWS_SECRET_ACCESS_KEY = credentials('aws-creds-access-key')
