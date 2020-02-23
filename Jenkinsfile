@@ -9,7 +9,7 @@ pipeline {
         // Using returnStatus
         EXIT_STATUS = """${sh(
                 returnStatus: true,
-                script: 'exit 1'
+                script: 'exit 0'
             )}"""
     }
     stages {
