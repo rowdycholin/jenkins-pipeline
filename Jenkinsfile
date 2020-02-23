@@ -7,8 +7,8 @@ pipeline {
     stages {
         stage('Example stage 2') {
             steps {
-                sh 'aws s3 ls'
-                sh 'printenv' 
+                sh '/usr/local/bin/aws s3 ls'
+                sh 'printenv|sort' 
             }
         }
     }
