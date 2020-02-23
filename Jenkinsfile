@@ -5,11 +5,6 @@ pipeline {
         AWS_SECRET_ACCESS_KEY = credentials('aws-creds-access-key')
     }
     stages {
-        stage('Example stage 1') {
-            steps {
-                // 
-            }
-        }
         stage('Example stage 2') {
             steps {
                 sh 'printenv' 
