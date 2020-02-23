@@ -8,8 +8,8 @@ pipeline {
         stage('Example stage 2') {
             steps {
                 withAWS(credentials: 'aws-credentials', region: 'us-east-1') {
-                   def files = s3FindFiles(bucket:'exploit-cloudformation')
-                   sh 'echo ${file}'
+                   s3FindFiles bucket:'exploit-cloudformation'
+                   sh 'echo files=${file}'
                    sh 'echo "hello KB">hello.txt'
                    sh 'printenv|sort'
                 }
