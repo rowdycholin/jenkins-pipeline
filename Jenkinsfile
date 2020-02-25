@@ -9,13 +9,13 @@ pipeline {
         stage('Test On node latest') {
           agent { docker { image 'node:latest' } }
           steps {
-            node_ver = "sh ( script: "npm -v", returnStdout: true).trim()   
+            node_ver = sh ( script: "npm -v", returnStdout: true).trim()   
           }
         }
         stage('Test On node6.3') {
           agent { docker { image 'node:6.3'} }
           steps {
-            node6_ver = "sh ( script: "npm -v", returnStdout: true).trim()
+            node6_ver = sh ( script: "npm -v", returnStdout: true).trim()
           }
         }
       }
