@@ -1,12 +1,20 @@
 pipeline {
-  agent any
-  parameters {
-    string(name: 'user', defaultValue: 'John', description: 'A user that triggers the pipeline')
-  }
+  agent none
   stages {
-    stage('Trigger pipeline') {
-      steps {
-        echo "Pipeline triggered by ${params.user}"
+    stage('Run Tests') {
+      parallel {
+        stage('Test On Alpine') {
+          agent { docker { image 'node:7-alpine' } }
+          steps {
+            sh "uname -r"
+          }
+        }
+        stage('Test On Centos') {
+          agent { docker { image 'centos:latest' } }
+          steps {
+            sh "uname -r"
+          }
+        }
       }
     }
   }
