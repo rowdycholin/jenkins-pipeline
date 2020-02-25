@@ -1,17 +1,13 @@
 pipeline {
-	agent any
-	stages {
-		stage ('build') {			
-	input{
-		message "Press Ok to continue"
-		submitter "user1,user2"
-		parameters {
-			string(name:'username', defaultValue: 'user', description: 'Username of the user pressing Ok')
-		}
-	}
-	steps { 
-		echo "User: ${username} said Ok."
-	}
-		}
-	}
+  agent any
+  parameters {
+    string(name: 'user', defaultValue: 'John', description: 'A user that triggers the pipeline')
+  }
+  stages {
+    stage('Trigger pipeline') {
+      steps {
+        echo "Pipeline triggered by ${params.USER}"
+      }
+    }
+  }
 }
