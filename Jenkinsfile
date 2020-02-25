@@ -9,8 +9,8 @@ pipeline {
             sh "uname -r"
           }
         }
-        stage('Test On Centos') {
-          agent { docker { image 'centos:latest' } }
+        stage('Test On ubuntu') {
+          agent { docker { image 'ubuntu:latest' } }
           steps {
             sh "uname -r"
           }
