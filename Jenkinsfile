@@ -10,12 +10,14 @@ pipeline {
           agent { docker { image 'node:latest' } }
           steps {
             sh "node_ver=`npm -v`"
+            sh "echo node version: ${node_ver}"
           }
         }
         stage('Test On node6.3') {
           agent { docker { image 'node:6.3'} }
           steps {
             sh "node6_ver=`npm -v`"
+            sh "echo node6 version: ${node6_ver}"
           }
         }
       }
@@ -23,8 +25,8 @@ pipeline {
   }
   post {
     always {
-      echo "node version: ${node_ver}"
-      echo "node6 version: ${node6_ver}"
+      sh "echo node version: ${node_ver}"
+      sh "echo node6 version: ${node6_ver}"
     }
   }
 }
