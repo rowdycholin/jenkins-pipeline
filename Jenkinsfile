@@ -3,16 +3,16 @@ pipeline {
   stages {
     stage('Run Tests') {
       parallel {
-        stage('Test On Alpine') {
-          agent { docker { image 'node:7-alpine' } }
+        stage('Test On node lates') {
+          agent { docker { image 'node:latest' } }
           steps {
-            sh "uname -r"
+            sh "npm -v"
           }
         }
-        stage('Test On guyton/centos6') {
-          agent { docker { image 'guyton/centos6'} }
+        stage('Test On node6.3') {
+          agent { docker { image 'node:6.3'} }
           steps {
-            sh "uname -r"
+            sh "npm -v"
           }
         }
       }
