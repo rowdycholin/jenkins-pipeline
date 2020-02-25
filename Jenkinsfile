@@ -1,7 +1,8 @@
+def node6_ver
+def node_ver
+
 pipeline {
   agent none
-  def node6_ver
-  def node_ver
   stages {
     stage('Run Tests') {
       parallel {
