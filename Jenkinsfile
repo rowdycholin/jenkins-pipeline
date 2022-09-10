@@ -1,4 +1,4 @@
-def node6_ver
+def node16_ver
 def node_ver
 
 pipeline {
@@ -10,15 +10,15 @@ pipeline {
           agent { docker { image 'node:latest' } }
           steps {
 	    script {
-              node_ver = sh ( script: "npm -v", returnStdout: true).trim()
+              node_ver = sh ( script: "node --version", returnStdout: true).trim()
 	    }
           }
         }
-        stage('Test On node6.3') {
-          agent { docker { image 'node:6.3'} }
+        stage('Test On node 16.13') {
+          agent { docker { image 'node:16.13'} }
           steps {
 	    script {
-              node6_ver = sh ( script: "npm -v", returnStdout: true).trim()
+              node16_ver = sh ( script: "node --version", returnStdout: true).trim()
 	    }
           }
         }
