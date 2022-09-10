@@ -27,8 +27,8 @@ pipeline {
   }
   post {
     always {
-      echo 'node version: ${node_ver}'
-      echo "node6 version: ${node6_ver}"
+      echo "node version: ${node_ver}"
+      echo "node16 version: ${node16_ver}"
     }
   }
 }
